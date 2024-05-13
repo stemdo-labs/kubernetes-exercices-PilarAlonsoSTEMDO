@@ -1,0 +1,73 @@
+# Me lanzaba un error porque no estaba usando el contexto de minikube.
+PS C:\Users\palonso> kubectl config use-context minikube
+Switched to context "minikube".
+PS C:\Users\palonso> kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:54854
+CoreDNS is running at https://127.0.0.1:54854/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+# CREAR EL POD DE FORMA IMPERATIVA
+PS C:\Users\palonso> kubectl run apache --image=httpd
+pod/apache created
+PS C:\Users\palonso>
+# LISTAR LOS PODS
+PS C:\Users\palonso> kubectl get pods
+NAME     READY   STATUS    RESTARTS   AGE
+apache   1/1     Running   0          57s
+# DESCRIBIR LOS PODS
+PS C:\Users\palonso> kubectl describe pod apache
+Name:             apache
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Mon, 13 May 2024 13:22:09 +0200
+Labels:           run=apache
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.3
+IPs:
+  IP:  10.244.0.3
+Containers:
+  apache:
+    Container ID:   docker://061176961c25ee7af37475f5d5068987adc5b67fd8b91f773312ca3401c9aa21
+    Image:          httpd
+    Image ID:       docker-pullable://httpd@sha256:36c8c79f900108f0f09fd4148ad35ade57cba0dc19d13f3d15be24ce94e6a639
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Mon, 13 May 2024 13:22:34 +0200
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cjvj7 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-cjvj7:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  73s   default-scheduler  Successfully assigned default/apache to minikube
+  Normal  Pulling    72s   kubelet            Pulling image "httpd"
+  Normal  Pulled     48s   kubelet            Successfully pulled image "httpd" in 23.977s (23.977s including waiting)
+  Normal  Created    48s   kubelet            Created container apache
+  Normal  Started    48s   kubelet            Started container apache
+  # BORRAR EL POD
+PS C:\Users\palonso> kubectl delete pod apache
+pod "apache" deleted
+PS C:\Users\palonso>
