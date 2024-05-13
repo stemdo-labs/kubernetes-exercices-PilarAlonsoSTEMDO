@@ -1,0 +1,9 @@
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio5> kubectl apply -f deployment.yml
+deployment.apps/demogat-yaml created
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio5> kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+demogat-yaml-68fc658f68-9xnjq   1/1     Running   0          11s
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio5> kubectl get deployments
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+demogat-yaml   1/1     1            1           17s
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio5>
