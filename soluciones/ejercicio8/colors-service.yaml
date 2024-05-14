@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: colors-service
+spec:
+  selector:
+    app: colors
+  ports:
+    - protocol: TCP
+      port: 8080  #apunta al deployment
+      targetPort: 8080  
+  type: ClusterIP #solo accesible dentro del servicio de cluster

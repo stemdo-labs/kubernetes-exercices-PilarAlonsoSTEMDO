@@ -1,0 +1,14 @@
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3> kubectl create deployment demogato --image=tomcat
+deployment.apps/demogato created
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3> kubectl get pods
+NAME                       READY   STATUS              RESTARTS   AGE
+demogato-c4d8fb8c7-pr9l7   0/1     ContainerCreating   0          23s
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3> kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+demogato   0/1     1            0           36s
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3> kubectl delete deployment demogato
+deployment.apps "demogato" deleted
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3> kubectl get pods 
+NAME                       READY   STATUS        RESTARTS   AGE
+demogato-c4d8fb8c7-pr9l7   0/1     Terminating   0          70s
+PS C:\Users\palonso\Desktop\Workspace_VSC\KUBERNETESSEMANALES\kubernetes-exercices-PilarAlonsoSTEMDO\soluciones\ejercicio3>
