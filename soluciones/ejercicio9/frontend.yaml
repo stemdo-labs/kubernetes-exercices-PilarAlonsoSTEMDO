@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: e2eteam/gb-frontend
+        image: corelab/gb-frontend:v4
         env:
         - name: GET_HOSTS_FROM
           value: dns
