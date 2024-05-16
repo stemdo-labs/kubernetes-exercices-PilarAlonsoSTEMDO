@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-d
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: index-volume
+          mountPath: "/usr/share/nginx/html"
+          readOnly: true
+      volumes:
+      - name: index-volume
+        configMap:
+          name: index
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-svc-2
+  labels:
+    app: web
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30004
+    protocol: TCP
+  selector:
+    app: web
